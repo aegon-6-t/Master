@@ -122,3 +122,96 @@
   box-shadow: 0 5px 15px rgba(253, 187, 45, 0.3);
   background: linear-gradient(45deg, #b21f1f, #fdbb2d);
 }
+
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.destination-button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
+  animation: float 3s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.destination-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, var(--color), transparent);
+  opacity: 0.3;
+  transition: all 0.5s ease;
+}
+
+.destination-button:hover::before {
+  opacity: 0.5;
+  transform: translateY(-10px);
+}
+
+.destination-emoji {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.destination-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.destination-button:hover .destination-emoji {
+  transform: scale(1.2) rotate(5deg);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.destination-button {
+  animation: appear 0.5s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .destinations-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+}
