@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const navigate = useNavigate()
 
   return (
     <div className="exotic-container">
@@ -17,9 +17,9 @@ function App() {
           </p>
           <button 
             className="exotic-button"
-            onClick={() => setCount(count + 1)}
+            onClick={() => navigate('/destination')}
           >
-            {count === 0 ? 'Démarrer l\'aventure' : `${count} palmiers plantés 🌴`}
+            Commencer l'aventure →
           </button>
         </div>
       </div>
